@@ -51,7 +51,7 @@ export async function mostrarMenuGestores(w: Wrapper) {
     // Opción 3 --> Mostrar gestores
     else if (opcion === "3") {
 
-      const paginacion: string = await w.rlp.questionAsync("¿Utilizar paginación (S/N)?");
+      const paginacion: string = await w.rlp.questionAsync("¿Utilizar paginación (S/N)? ");
       
       // mostramos los gestores con paginación
       if (paginacion === 'S') {
@@ -61,6 +61,18 @@ export async function mostrarMenuGestores(w: Wrapper) {
         await bancoGestores.mostrarGestores();
       }
 
+      await w.rlp.questionAsync("");
+    }
+
+    // Opción 4 -->  Mostrar gestor por identificador
+    else if (opcion === "4") {
+      await bancoGestores.mostrarGestorPorId(w);
+      await w.rlp.questionAsync("");
+    }
+
+    // Opción 5 --> Modificar gestor
+    else if (opcion === '5') {
+      await bancoGestores.actualizarGestorPorUsuario(w);
       await w.rlp.questionAsync("");
     }
 
